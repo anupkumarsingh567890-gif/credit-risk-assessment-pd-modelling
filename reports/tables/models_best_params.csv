@@ -1,0 +1,15 @@
+model,parameter,value
+Logistic Regression,C,1.0
+Decision Tree,max_depth,6
+Decision Tree,min_samples_leaf,50
+Random Forest,n_estimators,200
+Random Forest,min_samples_leaf,20
+Random Forest,max_features,sqrt
+Random Forest,max_depth,10
+XGBoost,subsample,0.7
+XGBoost,reg_lambda,10
+XGBoost,n_estimators,600
+XGBoost,min_child_weight,10
+XGBoost,max_depth,3
+XGBoost,learning_rate,0.02
+XGBoost,colsample_bytree,0.8

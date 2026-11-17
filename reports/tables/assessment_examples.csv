@@ -1,0 +1,4 @@
+id,credit_score,pd_pct,risk_category,decision,main_reasons,grade,actual_default
+1040029,560,7.26,Low,Approve,revol_util: 26 points below best; purpose: 5 points below best; loan_to_income: 4 points below best,B,0
+1030552,541,11.3,Medium,Refer for manual review,purpose: 16 points below best; annual_inc: 15 points below best; revol_util: 13 points below best,A,0
+851780,522,17.26,High,Decline,revol_util: 26 points below best; annual_inc: 18 points below best; purpose: 16 points below best,D,0

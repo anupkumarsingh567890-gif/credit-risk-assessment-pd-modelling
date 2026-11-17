@@ -1,0 +1,7 @@
+sample,band,loans,defaults,avg_score,min_score,max_score,avg_pd_pct,share_pct,default_rate_pct
+train,Low,10995,710,562.35,551,595,7.11,40.34,6.46
+train,Medium,11104,1533,541.22,531,550,13.46,40.74,13.81
+train,High,5160,1191,520.33,468,530,24.43,18.93,23.08
+test,Low,4469,305,561.9,551,595,7.21,35.87,6.82
+test,Medium,5204,738,540.95,531,550,13.57,41.77,14.18
+test,High,2785,719,520.18,466,530,24.53,22.36,25.82

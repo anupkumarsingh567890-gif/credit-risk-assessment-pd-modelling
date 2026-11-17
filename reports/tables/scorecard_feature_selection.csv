@@ -1,0 +1,25 @@
+feature,step,result
+emp_title_missing,IV < 0.02 (or > 0.5),removed
+dti,IV < 0.02 (or > 0.5),removed
+loan_amnt,IV < 0.02 (or > 0.5),removed
+total_acc,IV < 0.02 (or > 0.5),removed
+open_acc,IV < 0.02 (or > 0.5),removed
+credit_history_years,IV < 0.02 (or > 0.5),removed
+emp_length_missing,IV < 0.02 (or > 0.5),removed
+mths_since_last_delinq,IV < 0.02 (or > 0.5),removed
+verification_status,IV < 0.02 (or > 0.5),removed
+emp_length_years,IV < 0.02 (or > 0.5),removed
+has_delinq_history,IV < 0.02 (or > 0.5),removed
+delinq_2yrs,IV < 0.02 (or > 0.5),removed
+home_ownership,IV < 0.02 (or > 0.5),removed
+revol_bal,IV < 0.02 (or > 0.5),removed
+pub_rec_bankruptcies,IV < 0.02 (or > 0.5),removed
+pub_rec,WoE correlation > 0.6,removed
+revol_bal_to_income,p-value 0.053 > 0.05,removed
+revol_util,final model,kept
+purpose,final model,kept
+loan_to_income,final model,kept
+term_months,final model,kept
+inq_last_6mths,final model,kept
+annual_inc,final model,kept
+has_public_record,final model,kept

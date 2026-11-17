@@ -1,0 +1,4 @@
+risk_category,loans,exposure_musd,defaults,avg_pd_pct,default_rate_pct,avg_score,loan_share_pct,exposure_share_pct
+Low,15464,157.2,1015,7.31,6.56,562.22,38.94,35.28
+Medium,16308,185.32,2271,13.21,13.93,541.13,41.06,41.59
+High,7945,103.08,1910,22.77,24.04,520.27,20.0,23.13

@@ -1,0 +1,112 @@
+column,description,group,timing,dtype,missing_pct,n_unique,example,recommendation
+id,Unique LendingClub loan listing ID,Identifier,Identifier,int64,0.0,39717,,Drop - identifier
+member_id,Unique LendingClub borrower ID,Identifier,Identifier,int64,0.0,39717,,Drop - identifier
+loan_amnt,Loan amount requested by the borrower (USD),Loan terms,Application,int64,0.0,885,5000,Candidate predictor
+funded_amnt,Amount committed to the loan at issuance; can be lower than requested,Loan terms,Origination,int64,0.0,1041,5000,Exclude - set at issuance; near-duplicate of loan_amnt
+funded_amnt_inv,Portion of the funded amount committed by investors,Loan terms,Origination,float64,0.0,8205,4975.0,"Exclude - investor funding, unknown at application"
+term,Number of monthly payments: 36 or 60,Loan terms,Application,object,0.0,2, 36 months,Candidate predictor
+int_rate,"Interest rate set by LendingClub from the sub-grade (stored as text, e.g. '10.65%')",LC pricing,Origination,object,0.0,371,10.65%,Decision needed - LendingClub's own risk output
+installment,"Monthly payment owed; a function of funded amount, rate and term",LC pricing,Origination,float64,0.0,15383,162.87,Decision needed - derived from int_rate and amount
+grade,LendingClub-assigned risk grade A (best) to G (worst),LC pricing,Origination,object,0.0,7,B,Decision needed - LendingClub's own risk output
+sub_grade,LendingClub-assigned sub-grade A1 to G5,LC pricing,Origination,object,0.0,35,B2,Decision needed - LendingClub's own risk output
+emp_title,Job title supplied by the borrower (free text),Borrower,Application,object,6.19,28820,,"Exclude - free text, ~28.8k unique values"
+emp_length,Employment length: '< 1 year' to '10+ years',Borrower,Application,object,2.71,11,10+ years,Candidate predictor
+home_ownership,"Home ownership: RENT, OWN, MORTGAGE, OTHER, NONE",Borrower,Application,object,0.0,5,RENT,Candidate predictor
+annual_inc,Self-reported annual income (USD),Borrower,Application,float64,0.0,5318,24000.0,Candidate predictor
+verification_status,"Whether LendingClub verified the income: Verified, Source Verified, Not Verified",Borrower,Application,object,0.0,3,Verified,Candidate predictor
+issue_d,Month the loan was funded (issue date),Loan terms,Origination,object,0.0,55,Dec-11,Keep as split / vintage key - not a predictor
+loan_status,"Loan status at the snapshot: Fully Paid, Charged Off, Current",Outcome,Outcome,object,0.0,3,Fully Paid,Target source
+pymnt_plan,Whether a hardship payment plan has been put in place,Repayment,Post-origination,object,0.0,1,n,Drop - post-origination leakage
+url,Web link to the loan listing,Identifier,Identifier,object,0.0,39717,,Drop - identifier
+desc,Loan description typed by the borrower (free text),Loan terms,Application,object,32.59,26526,,"Exclude - free text, 33% missing"
+purpose,Borrower-selected loan purpose category,Loan terms,Application,object,0.0,14,credit_card,Candidate predictor
+title,Loan title typed by the borrower (free text),Loan terms,Application,object,0.03,19615,,"Exclude - free text, duplicates `purpose`"
+zip_code,First 3 digits of the borrower's zip code,Borrower,Application,object,0.0,823,,"Exclude - fair-lending proxy risk, 823 levels"
+addr_state,Borrower's US state,Borrower,Application,object,0.0,50,AZ,Candidate predictor - use with caution (geographic)
+dti,Debt-to-income: monthly debt payments (excl. mortgage and this loan) / monthly income x 100,Borrower,Application,float64,0.0,2868,27.65,Candidate predictor
+delinq_2yrs,Number of 30+ days-past-due incidents in the last 2 years,Credit bureau,Application,int64,0.0,11,0,Candidate predictor
+earliest_cr_line,Month the borrower's earliest credit line was opened,Credit bureau,Application,object,0.0,526,Jan-85,Candidate predictor
+inq_last_6mths,Credit inquiries in the last 6 months (excl. auto and mortgage),Credit bureau,Application,int64,0.0,9,1,Candidate predictor
+mths_since_last_delinq,Months since the last delinquency; blank usually means none on file,Credit bureau,Application,float64,64.66,95,35.0,Candidate predictor
+mths_since_last_record,Months since the last public record; blank usually means none on file,Credit bureau,Application,float64,92.99,111,113.0,Candidate predictor
+open_acc,Number of open credit lines,Credit bureau,Application,int64,0.0,40,3,Candidate predictor
+pub_rec,Number of derogatory public records,Credit bureau,Application,int64,0.0,5,0,Candidate predictor
+revol_bal,Total revolving credit balance (USD),Credit bureau,Application,int64,0.0,21711,13648,Candidate predictor
+revol_util,"Revolving utilisation: balance / total revolving limit (stored as text, e.g. '83.7%')",Credit bureau,Application,object,0.13,1089,83.70%,Candidate predictor
+total_acc,Total number of credit lines ever in the file,Credit bureau,Application,int64,0.0,82,9,Candidate predictor
+initial_list_status,"Initial listing status: w = whole, f = fractional",Platform,Origination,object,0.0,1,f,Drop - constant value
+out_prncp,Outstanding principal at the snapshot date,Repayment,Post-origination,float64,0.0,1137,0.0,Drop - post-origination leakage
+out_prncp_inv,Outstanding principal funded by investors,Repayment,Post-origination,float64,0.0,1138,0.0,Drop - post-origination leakage
+total_pymnt,Total payments received to date,Repayment,Post-origination,float64,0.0,37850,5863.155187,Drop - post-origination leakage
+total_pymnt_inv,"Total payments received to date, investor portion",Repayment,Post-origination,float64,0.0,37518,5833.84,Drop - post-origination leakage
+total_rec_prncp,Principal received to date,Repayment,Post-origination,float64,0.0,7976,5000.0,Drop - post-origination leakage
+total_rec_int,Interest received to date,Repayment,Post-origination,float64,0.0,35148,863.16,Drop - post-origination leakage
+total_rec_late_fee,Late fees received to date,Repayment,Post-origination,float64,0.0,1356,0.0,Drop - post-origination leakage
+recoveries,Gross recoveries after charge-off,Repayment,Post-origination,float64,0.0,4040,0.0,Drop - post-origination leakage
+collection_recovery_fee,Collection fee on post-charge-off recoveries,Repayment,Post-origination,float64,0.0,2616,0.0,Drop - post-origination leakage
+last_pymnt_d,Month the last payment was received,Repayment,Post-origination,object,0.18,101,Jan-15,Drop - post-origination leakage
+last_pymnt_amnt,Amount of the last payment received,Repayment,Post-origination,float64,0.0,34930,171.62,Drop - post-origination leakage
+next_pymnt_d,Next scheduled payment month,Repayment,Post-origination,object,97.13,2,Jun-16,Drop - post-origination leakage
+last_credit_pull_d,Most recent month LendingClub pulled the borrower's credit,Repayment,Post-origination,object,0.01,106,May-16,Drop - post-origination leakage
+collections_12_mths_ex_med,"Collections in the last 12 months, excluding medical",Credit bureau,Application,float64,0.14,1,0.0,Drop - constant value
+mths_since_last_major_derog,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+policy_code,1 = loan under publicly available credit policy,Platform,Origination,int64,0.0,1,1,Drop - constant value
+application_type,Individual or joint application,Platform,Application,object,0.0,1,INDIVIDUAL,Drop - constant value
+annual_inc_joint,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+dti_joint,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+verification_status_joint,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+acc_now_delinq,Number of accounts currently delinquent,Credit bureau,Application,int64,0.0,1,0,Drop - constant value
+tot_coll_amt,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+tot_cur_bal,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+open_acc_6m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+open_il_6m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+open_il_12m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+open_il_24m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mths_since_rcnt_il,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+total_bal_il,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+il_util,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+open_rv_12m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+open_rv_24m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+max_bal_bc,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+all_util,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+total_rev_hi_lim,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+inq_fi,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+total_cu_tl,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+inq_last_12m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+acc_open_past_24mths,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+avg_cur_bal,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+bc_open_to_buy,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+bc_util,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+chargeoff_within_12_mths,Charge-offs in the last 12 months,Credit bureau,Application,float64,0.14,1,0.0,Drop - constant value
+delinq_amnt,Past-due amount owed on delinquent accounts (USD),Credit bureau,Application,int64,0.0,1,0,Drop - constant value
+mo_sin_old_il_acct,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mo_sin_old_rev_tl_op,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mo_sin_rcnt_rev_tl_op,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mo_sin_rcnt_tl,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mort_acc,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mths_since_recent_bc,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mths_since_recent_bc_dlq,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mths_since_recent_inq,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+mths_since_recent_revol_delinq,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_accts_ever_120_pd,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_actv_bc_tl,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_actv_rev_tl,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_bc_sats,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_bc_tl,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_il_tl,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_op_rev_tl,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_rev_accts,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_rev_tl_bal_gt_0,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_sats,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_tl_120dpd_2m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_tl_30dpd,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_tl_90g_dpd_24m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+num_tl_op_past_12m,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+pct_tl_nvr_dlq,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+percent_bc_gt_75,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+pub_rec_bankruptcies,Number of public-record bankruptcies,Credit bureau,Application,float64,1.75,3,0.0,Candidate predictor
+tax_liens,Number of tax liens,Credit bureau,Application,float64,0.1,1,0.0,Drop - constant value
+tot_hi_cred_lim,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+total_bal_ex_mort,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+total_bc_limit,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing
+total_il_high_credit_limit,Field not populated for 2007-2011 loans (introduced by LendingClub later),Not populated,n/a,float64,100.0,0,,Drop - 100% missing

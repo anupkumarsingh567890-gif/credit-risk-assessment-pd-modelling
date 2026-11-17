@@ -1,0 +1,9 @@
+metric,value
+loans,"39,717"
+exposure_musd,445.60
+default_rate_36m_pct,13.08
+charged_off_rate_resolved_pct,14.59
+average_pd_pct,12.82
+expected_defaults,"5,092.57"
+actual_defaults_36m,"5,196"
+high_risk_loans_pct,20.00

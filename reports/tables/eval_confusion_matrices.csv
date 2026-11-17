@@ -1,0 +1,5 @@
+model,TN,FP,FN,TP
+Logistic Regression,6234,4462,599,1163
+Decision Tree,7352,3344,851,911
+Random Forest,5878,4818,534,1228
+XGBoost,6270,4426,563,1199

@@ -1,0 +1,3 @@
+target,loans,default_rate_pct,test_auc
+Default within 36 months (main),12458,14.143522234708621,0.6810717002420416
+"Charged Off vs Fully Paid, Current excluded",11501,16.67681071211199,0.7145272242501902

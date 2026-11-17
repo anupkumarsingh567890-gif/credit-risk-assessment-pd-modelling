@@ -1,0 +1,25 @@
+feature,iv,n_bins,strength
+revol_util,0.08029350861967287,6,Weak
+purpose,0.07421477578830944,9,Weak
+loan_to_income,0.05842784673115514,8,Weak
+term_months,0.056614581107156385,2,Weak
+inq_last_6mths,0.051334080179219296,4,Weak
+annual_inc,0.04605686330504165,9,Weak
+has_public_record,0.02786297534609688,2,Weak
+pub_rec,0.025553091743218577,2,Weak
+revol_bal_to_income,0.022123999187136013,9,Weak
+emp_title_missing,0.015475336561649898,2,Not useful
+dti,0.013907333305748101,6,Not useful
+loan_amnt,0.013708396691896961,3,Not useful
+total_acc,0.010421567247991101,6,Not useful
+open_acc,0.009597224321148068,4,Not useful
+credit_history_years,0.009580978154665607,5,Not useful
+emp_length_missing,0.00838787618332441,2,Not useful
+mths_since_last_delinq,0.0064728988627362205,7,Not useful
+verification_status,0.006291834627898001,3,Not useful
+emp_length_years,0.004426622417917974,4,Not useful
+has_delinq_history,0.004284000728243073,2,Not useful
+delinq_2yrs,0.003061746264503946,2,Not useful
+home_ownership,0.0029255936471253275,4,Not useful
+revol_bal,0.002558444454868979,5,Not useful
+pub_rec_bankruptcies,0.0,1,Not useful

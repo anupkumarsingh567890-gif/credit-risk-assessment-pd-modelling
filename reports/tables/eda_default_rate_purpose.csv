@@ -1,0 +1,14 @@
+group,loans,defaults,default_rate_pct,share_pct
+small_business,1271,308,24.23,4.66
+educational,325,53,16.31,1.19
+house,257,37,14.4,0.94
+other,2925,413,14.12,10.73
+vacation,262,36,13.74,0.96
+medical,480,64,13.33,1.76
+debt_consolidation,12331,1609,13.05,45.24
+moving,405,52,12.84,1.49
+home_improvement,2118,231,10.91,7.77
+major_purchase,1685,167,9.91,6.18
+wedding,671,63,9.39,2.46
+credit_card,3375,311,9.21,12.38
+car,1154,90,7.8,4.23

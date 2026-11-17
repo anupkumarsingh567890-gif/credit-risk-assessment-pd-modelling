@@ -1,0 +1,5 @@
+group,loans,defaults,default_rate_pct,share_pct
+MORTGAGE,11817,1415,11.97,43.35
+OTHER,101,17,16.83,0.37
+OWN,2135,280,13.11,7.83
+RENT,13206,1722,13.04,48.45

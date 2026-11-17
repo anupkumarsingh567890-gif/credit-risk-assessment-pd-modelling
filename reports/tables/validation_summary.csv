@@ -1,0 +1,9 @@
+check,result,rule,status
+Out-of-time discrimination,test AUC 0.681 (Gini 0.362),AUC >= 0.65,Pass
+Overfitting (train - test AUC),+0.042,gap <= 0.05,Pass
+CV stability (AUC std across folds),0.021,std <= 0.03,Pass
+Score PSI (train -> test),0.014,PSI < 0.1,Pass
+Max characteristic CSI,0.044 (term_months),CSI < 0.1,Pass
+Calibration-in-the-large (binomial test),"mean PD 13.33% vs observed 14.14%; z = +2.74, p = 0.006",p >= 0.05,Monitor
+"Hosmer-Lemeshow (test, 10 groups, 10 d.f.)","HL = 29.6, p = 0.001",p >= 0.05,Monitor
+Scorecard PD vs champion PD (rank correlation),0.902,Spearman >= 0.9,Pass
