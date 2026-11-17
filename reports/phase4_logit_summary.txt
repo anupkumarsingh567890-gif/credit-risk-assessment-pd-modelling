@@ -4,7 +4,7 @@ Dep. Variable:                default   No. Observations:                27259
 Model:                          Logit   Df Residuals:                    27251
 Method:                           MLE   Df Model:                            7
 Date:                Tue, 17 Nov 2026   Pseudo R-squ.:                 0.05251
-Time:                        21:05:46   Log-Likelihood:                -9780.0
+Time:                        21:21:24   Log-Likelihood:                -9780.0
 converged:                       True   LL-Null:                       -10322.
 Covariance Type:            nonrobust   LLR p-value:                8.125e-230
 =====================================================================================

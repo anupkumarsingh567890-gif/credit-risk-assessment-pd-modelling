@@ -6,10 +6,10 @@ Cross-validation: TimeSeriesSplit with 4 folds on the training sample (2007-06 t
 
 | model | cv_auc_mean | cv_auc_std | configs_tried | oof_brier_raw | oof_brier_calibrated | calibrated | minutes |
 |---|---|---|---|---|---|---|---|
-| Logistic Regression | 0.6508 | 0.0268 | 4 | 0.1040 | 0.1041 | 0 | 0.1634 |
-| Decision Tree | 0.6109 | 0.0168 | 20 | 0.1072 | 0.1060 | 1 | 0.1125 |
-| Random Forest | 0.6585 | 0.0264 | 12 | 0.1042 | 0.1045 | 0 | 0.5962 |
-| XGBoost | 0.6653 | 0.0215 | 15 | 0.1040 | 0.1039 | 0 | 0.3918 |
+| Logistic Regression | 0.6508 | 0.0268 | 4 | 0.1040 | 0.1041 | 0 | 0.1612 |
+| Decision Tree | 0.6109 | 0.0168 | 20 | 0.1072 | 0.1060 | 1 | 0.1122 |
+| Random Forest | 0.6585 | 0.0264 | 12 | 0.1042 | 0.1045 | 0 | 0.5829 |
+| XGBoost | 0.6653 | 0.0215 | 15 | 0.1040 | 0.1039 | 0 | 0.3905 |
 
 ## Fold-by-fold results (best configuration)
 
